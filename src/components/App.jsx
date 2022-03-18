@@ -1,17 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import emojis from "../emojipedia"
-
-function createCard(emoji) {
-    return (
-        <Card
-            key={emoji.id}
-            emoji={emoji.emoji}
-            name={emoji.name}
-            description={emoji.meaning}
-        />
-    )
-}
+import emojipedia from "../emojipedia";
 
 function App() {
     return (
@@ -19,7 +8,16 @@ function App() {
             <h1>
                 <span>emojipedia</span>
             </h1>
-            <dl className="dictionary">{emojis.map(createCard)}</dl>
+            <dl className="dictionary">
+                {emojipedia.map(emojiTerm => (
+                    <Card
+                        key={emojiTerm.id}
+                        emoji={emojiTerm.emoji}
+                        name={emojiTerm.name}
+                        description={emojiTerm.meaning}
+                    />
+                ))}
+            </dl>
         </div>
     );
 }
